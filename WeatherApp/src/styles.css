@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌌 Global Reset */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+/* 🧊 Glassmorphism Panel */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 📊 Neon Chart Lines */
+.recharts-cartesian-axis-tick tspan {
+  fill: #94a3b8;
+}
+
+.recharts-tooltip-label {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.recharts-tooltip-item {
+  color: #e0f2fe;
+}
+
+.recharts-line path {
+  stroke-width: 3 !important;
+  filter: drop-shadow(0px 0px 6px #22d3ee);
+}
+
+.recharts-line-dot {
+  stroke: #22d3ee;
+  stroke-width: 2;
+  fill: #0f172a;
+  filter: drop-shadow(0px 0px 4px #22d3ee);
+}
+
+.recharts-line-dot:hover {
+  fill: #22d3ee;
+  filter: drop-shadow(0px 0px 8px #22d3ee);
+}
+
+/* 🌈 Gradient Buttons */
+.btn-gradient {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+}
+
+.btn-gradient:active {
+  transform: scale(0.95);
+}
+
+/* 🌟 Icon Hover Effects */
+.icon-hover {
+  transition: all 0.3s ease;
+}
+
+.icon-hover:hover {
+  color: #3b82f6;
+  transform: scale(1.2);
+}
+
+/* 🔍 Input Styling */
+input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+/* 🌅 Animated Gradient Background */
+.animated-bg {
+  background: linear-gradient(-45deg, #1e3a8a, #2563eb, #0ea5e9, #38bdf8);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ☁️ Floating Clouds */
+.cloud {
+  position: absolute;
+  background: white;
+  opacity: 0.2;
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: floatClouds 60s linear infinite;
+}
+
+.cloud.small {
+  width: 120px;
+  height: 60px;
+  top: 15%;
+  left: -200px;
+  animation-duration: 45s;
+}
+
+.cloud.medium {
+  width: 200px;
+  height: 100px;
+  top: 30%;
+  left: -250px;
+  animation-duration: 60s;
+}
+
+.cloud.large {
+  width: 300px;
+  height: 150px;
+  top: 50%;
+  left: -300px;
+  animation-duration: 75s;
+}
+
+@keyframes floatClouds {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(150vw);
+  }
+}
+
+/* 🌤 Weather Background Variants */
+.bg-sunny {
+  background: linear-gradient(-45deg, #60a5fa, #3b82f6, #93c5fd, #bae6fd);
+}
+
+.bg-cloudy {
+  background: linear-gradient(-45deg, #6b7280, #9ca3af, #d1d5db, #f3f4f6);
+}
+
+.bg-rainy {
+  background: linear-gradient(-45deg, #1e293b, #334155, #475569, #64748b);
+}
+
+.bg-thunder {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #111827);
+}
+
+.bg-snowy {
+  background: linear-gradient(-45deg, #e0f2fe, #bae6fd, #f0f9ff, #f9fafb);
+}
+
+/* 🌧 Rain Animation */
+.rain-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.raindrop {
+  position: absolute;
+  top: -10%;
+  width: 2px;
+  height: 15px;
+  background: rgba(173, 216, 230, 0.7);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120vh) translateX(10px);
+    opacity: 0;
+  }
+}
+
+/* ❄ Snow Animation */
+.snow-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10%;
+  font-size: 1rem;
+  color: white;
+  opacity: 0.9;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* 🌞 Slow Sun Spin */
+.animate-spin-slow {
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 🌙 Gentle Moon Glow */
