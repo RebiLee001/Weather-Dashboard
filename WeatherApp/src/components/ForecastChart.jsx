@@ -5,72 +5,57 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer,
+  ResponsiveContainer
 } from "recharts";
-import { motion } from "framer-motion";
 import {
   WiDaySunny,
   WiCloud,
   WiRain,
   WiThunderstorm,
-  WiSnow,
+  WiSnow
 } from "react-icons/wi";
 
 function ForecastChart({ forecast }) {
-  // ✅ Pick weather icon based on temp or random condition
-  const getIcon = (temp) => {
-    if (temp > 28) return <WiDaySunny className="text-yellow-400" size={40} />;
-    if (temp > 20) return <WiCloud className="text-gray-300" size={40} />;
-    if (temp > 10) return <WiRain className="text-blue-400" size={40} />;
-    if (temp > 0) return <WiSnow className="text-cyan-200" size={40} />;
-    return <WiThunderstorm className="text-purple-400" size={40} />;
+  // 🔥 Function to pick icon based on condition
+  const getIcon = (condition) => {
+    if (!condition) return <WiDaySunny size={28} color="#facc15" />;
+
+    const cond = condition.toLowerCase();
+    if (cond.includes("cloud")) return <WiCloud size={28} color="#94a3b8" />;
+    if (cond.includes("rain")) return <WiRain size={28} color="#38bdf8" />;
+    if (cond.includes("snow")) return <WiSnow size={28} color="#e0f2fe" />;
+    if (cond.includes("thunder")) return <WiThunderstorm size={28} color="#f87171" />;
+    return <WiDaySunny size={28} color="#facc15" />;
   };
 
   return (
-    <div className="w-full h-72 flex flex-col items-center justify-center">
-      <h2 className="text-xl font-bold mb-3 text-cyan-300">5-Day Forecast</h2>
-
-      {/* Animated Weather Icons */}
-      <div className="flex justify-center gap-6 mb-4">
-        {forecast.map((day, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: idx * 0.2, duration: 0.5 }}
-            whileHover={{ scale: 1.2 }}
-          >
-            <div className="flex flex-col items-center">
-              {getIcon(day.temp)}
-              <p className="text-sm mt-1">{day.date}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Forecast Line Chart */}
-      <ResponsiveContainer width="100%" height="60%">
+    <div className="p-4">
+      <h2 className="text-xl font-semibold mb-4">📅 5-Day Forecast</h2>
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart data={forecast}>
           <XAxis dataKey="date" stroke="#94a3b8" />
           <YAxis stroke="#94a3b8" />
           <Tooltip
             contentStyle={{
-              backgroundColor: "rgba(17, 24, 39, 0.8)",
-              border: "1px solid #22d3ee",
+              background: "rgba(0,0,0,0.7)",
+              border: "none",
               borderRadius: "8px",
-              color: "#fff",
+              color: "white"
             }}
           />
-          <Line
-            type="monotone"
-            dataKey="temp"
-            stroke="#22d3ee"
-            strokeWidth={3}
-            dot={{ r: 5 }}
-            activeDot={{ r: 8 }}
-          />
+          <Line type="monotone" dataKey="temp" stroke="#22d3ee" strokeWidth={3} dot={{ r: 5 }} />
         </LineChart>
       </ResponsiveContainer>
+
+      {/* Icons under chart */}
+      <div className="flex justify-between mt-4">
+        {forecast.map((day, i) => (
+          <div key={i} className="flex flex-col items-center">
+            {getIcon(day.condition)}
+            <span className="text-sm mt-1">{day.date}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
