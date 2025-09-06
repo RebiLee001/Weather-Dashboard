@@ -1,9 +1,9 @@
-🌦 Weather Dashboard
+#🌦 Weather Dashboard
 
 A responsive and animated Weather Dashboard built with React + Vite, fetching live data from the OpenWeatherMap API.
 It provides current weather details, a 5-day forecast with icons, and beautiful UI animations.
 
-🚀 Features
+#🚀 Features
 
 🌍 Search weather by city name.
 
@@ -29,19 +29,15 @@ React Icons – Weather icons.
 
 Axios – API requests.
 
-📦 Installation
+#📦 Installation
 
 Clone repo
 
 git clone https://github.com/your-username/weather-dashboard.git
 cd weather-dashboard
 
-
 Install dependencies
-
 npm install
-
-
 Set up environment variables
 Create a .env file in the project root and add:
 
@@ -58,7 +54,7 @@ npm run dev
 Your app will run at: http://localhost:5173
  🎉
 
-📸 Screenshots
+#📸 Screenshots
 Dashboard
 
 🌐 API Reference
@@ -67,7 +63,7 @@ OpenWeatherMap Current Weather API
 
 OpenWeatherMap 5 Day / 3 Hour Forecast API
 
-📌 Roadmap
+#📌 Roadmap
 
  Add unit switch (Celsius ↔ Fahrenheit).
 
@@ -77,7 +73,7 @@ OpenWeatherMap 5 Day / 3 Hour Forecast API
 
  Deploy to Vercel/Netlify.
 
-👩‍💻 Author
+#👩‍💻 Author
 
 Developed by [REBI EDWARD AKPA] ✨
 
